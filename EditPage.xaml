@@ -1,0 +1,31 @@
+﻿<Page x:Class="LearnLanguageSchool.Pages.EditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LearnLanguageSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="EditPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TbName" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" FontSize="18">Наименование</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox x:Name="TbxName" Text="Наименование" Height="20" Width="250" Margin="8"/>
+            <TextBox x:Name="TbxCost"  Text="1200" Height="20" Width="100" Margin="8"/>
+            <TextBox x:Name="TbxDiscount" Text="5" Height="20" Width="100" Margin="8"/>
+            <Button Content="Сохранить" Height="20" Width="150" Background="#FF04A0FF" Margin="8" Click="Save_Click"></Button>
+            <Button Content="Отмена" Height="20" Width="150" Background="#FF04A0FF" Margin="8" Click="Cancel_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

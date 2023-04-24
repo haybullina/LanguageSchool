@@ -1,0 +1,101 @@
+﻿<Page x:Class="LearnLanguageSchool.Pages.ListOfServices"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LearnLanguageSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="ListOfServices">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Image Source="/Images/school_logo.png" Width="50" Height="50" HorizontalAlignment="Left"/>
+            <TextBlock Margin="200,10,100,10" TextWrapping="Wrap" Text="Список услуг" FontSize="18" HorizontalAlignment="Stretch"/>
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button x:Name="BtnDate" Margin="0,0,10,0" Height="20" Width="120" Content="Посмотреть запись" Background="#FF04A0FF" Click="Date_Click"></Button>
+                <Button x:Name="BtnBack" Height="20" Width="120" Content="Выйти" Background="#FF04A0FF" Click="Back_Click"></Button>
+            </StackPanel>
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 60 0 0" Orientation="Horizontal">
+            <ComboBox Name="CmbxSort" Margin="10" Height="20" Width="150" SelectionChanged="CmbxSort_SelectionChanged">
+                <ComboBoxItem>По возрастанию</ComboBoxItem>
+                <ComboBoxItem>По убыванию</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="CmbxDiscountRange" Margin="10" Height="20" Width="150"  SelectionChanged="CmbxDiscountRange_SelectionChanged">
+                <ComboBoxItem>Все</ComboBoxItem>
+                <ComboBoxItem>от 0% до 5%</ComboBoxItem>
+                <ComboBoxItem>от 5% до 15%</ComboBoxItem>
+                <ComboBoxItem>от 15% до 30%</ComboBoxItem>
+                <ComboBoxItem>от 30% до 70%</ComboBoxItem>
+                <ComboBoxItem>от 70% до 100%</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Margin="10">Поиск: </TextBlock>
+            <TextBox x:Name="Search" Width="200" Height="20" Margin="10" TextChanged="Search_TextChanged"></TextBox>
+        </StackPanel>
+
+        <ListView x:Name="ListItemsAdmin" Margin="0 100 0 0" Visibility="Collapsed" Grid.Column="1" Grid.Row="1" SelectionChanged="Recording_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Background="{Binding ColorBackground}">
+                        <Image Width="150" Height="150" Source="{Binding MainImagePath}"/>
+                        <StackPanel Margin="10">
+                            <TextBlock FontSize="15" Text="{Binding Title}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="15" TextDecorations="Strikethrough" Text="{Binding CostStrikethrough}"/>
+                                <TextBlock FontSize="15" Text="{Binding DiscountedPrice}"/>
+                            </StackPanel>
+                            <TextBlock FontSize="13" Text="{Binding DiscountString}"/>
+
+                            <StackPanel Height="20"></StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Редактировать" Margin="10" Background="White" Padding="5" Click="Edit_Click"/>
+                                <Button Content="Удалить" Margin="10" Background="White" Padding="5" Click="Delete_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="ListItems" Visibility="Collapsed" Grid.Column="1" Grid.Row="1" Margin="0 100 0 0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Background="{Binding ColorBackground}">
+                        <Image Width="150" Height="150" Source="{Binding MainImagePath}"/>
+                        <StackPanel Margin="10">
+                            <TextBlock FontSize="15" Text="{Binding Title}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="15" TextDecorations="Strikethrough" Text="{Binding CostStrikethrough}"/>
+                                <TextBlock FontSize="15" Text="{Binding DiscountedPrice}"/>
+                            </StackPanel>
+                            <TextBlock FontSize="13" Text="{Binding DiscountString}"/>
+                            <StackPanel Height="20"></StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock x:Name="NumberFrom" HorizontalAlignment="Center">0</TextBlock>
+            <TextBlock HorizontalAlignment="Center">\</TextBlock>
+            <TextBlock x:Name="NumberTo" HorizontalAlignment="Center">0</TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>
